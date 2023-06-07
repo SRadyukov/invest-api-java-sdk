@@ -159,7 +159,8 @@ public class ReactiveCandleStreamsExample {
                           .collect(Collectors.toList())
                       )
                       .build())
-                    .build())
+                    .build()),
+                  mdOrderbookRequestSink.asFlux()
                 )
               );
 
