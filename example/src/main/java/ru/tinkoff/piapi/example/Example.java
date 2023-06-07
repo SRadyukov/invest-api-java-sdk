@@ -32,8 +32,17 @@ public class Example {
     //Figi инструмента, который будет использоваться в методах исполнения заявок и стоп-заявок
     //Для тестирования рекомендуется использовать дешевые бумаги
     var instrumentFigi = args[1];
-
     var token = args[0];
+
+    if (args.length > 2) {
+      new ReactiveCandleStreamsExample(token, "reactive-sdk-example").run().block();
+    } else {
+      example(token, instrumentFigi);
+    }
+
+  }
+
+  public static void example(String token, String instrumentFigi) {
     var api = InvestApi.create(token);
     //Можно создать экземпляр sandbox - тогда все вызовы будут переадресованы в песочницу
     var sandboxApi = InvestApi.createSandbox(token);
